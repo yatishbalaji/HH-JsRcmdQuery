@@ -33,13 +33,13 @@
         <dependency>
             <artifactId>RcmdStat</artifactId>
             <groupId>com.headhonchos</groupId>
-            <version>3.0</version>
+            <version>1.0</version>
         </dependency>
 
         <dependency>
             <groupId>com.headhonchos</groupId>
             <artifactId>DataObjects</artifactId>
-            <version>3.0</version>
+            <version>1.0</version>
         </dependency>
 
         <dependency>

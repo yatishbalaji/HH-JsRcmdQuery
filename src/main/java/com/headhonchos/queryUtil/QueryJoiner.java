@@ -43,11 +43,11 @@
 /*    */   
 /*    */   private static ArrayList<String> getFilteredQueries(List<String> subQueries) throws QueryBuildException {
 /* 45 */     ArrayList<String> copiedList = new ArrayList(subQueries);
-/* 46 */     CollectionUtils.filter(copiedList, new NonEmptyFilter(null));
+/* 46 */     CollectionUtils.filter(copiedList, new NonEmptyFilter());
 /* 47 */     if (copiedList.isEmpty()) {
 /* 48 */       throw new QueryBuildException("Sub Queries Empty");
 /*    */     }
-/* 50 */     CollectionUtils.transform(copiedList, new ParenthesesFormat(null));
+/* 50 */     CollectionUtils.transform(copiedList, new ParenthesesFormat());
 /* 51 */     return copiedList;
 /*    */   }
 /*    */   

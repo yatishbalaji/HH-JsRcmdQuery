@@ -29,7 +29,7 @@
 /*    */     throws QueryBuildException
 /*    */   {
 /* 31 */     ArrayList<String> newArrayList = new ArrayList(terms);
-/* 32 */     CollectionUtils.filter(newArrayList, new NonEmptyFilter(null));
+/* 32 */     CollectionUtils.filter(newArrayList, new NonEmptyFilter());
 /*    */     
 /*    */ 
 /* 35 */     if (CollectionUtils.isEmpty(newArrayList)) {

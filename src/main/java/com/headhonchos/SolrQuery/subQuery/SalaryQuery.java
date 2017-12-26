@@ -44,7 +44,7 @@
 /* 44 */     String salaryDataIncompleteQuery = QueryBuilder.getSimpleQuery("all_salaries", new ArrayList(Arrays.asList(new String[] { "0" })));
 /* 45 */     String salaryQuery = QueryJoiner.or(all_salaries, salaryDataIncompleteQuery).replaceAll("\"", "");
 /*    */     String finalQuery;
-/* 47 */     String finalQuery; if (flagForeign) {
+			 if (flagForeign) {
 /* 48 */       List<String> countryName = new ArrayList(Arrays.asList(new String[] { "India" }));
 /* 49 */       Pair<String, String> salaryRangeNonIndian = SalaryStat.getSalaryRangeNonIndian(minSalary, maxSalary);
 /* 50 */       String all_salaries1 = QueryBuilder.getRangeQuery("all_salaries", (String)salaryRangeNonIndian.getLeft(), (String)salaryRangeNonIndian.getRight());
