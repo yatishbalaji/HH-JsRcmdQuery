@@ -1,0 +1,56 @@
+<configuration>
+
+    <appender name="ConsoleLogger" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <outputPatternAsHeader>true</outputPatternAsHeader>
+        </encoder>
+    </appender>
+
+    <!--&lt;!&ndash;Daily rolling file appender &ndash;&gt;-->
+    <appender name="RollingFileLogger" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/ClientRcmdWebService_rolledlogs/CRWS.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>CRWS.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <maxHistory>15</maxHistory>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{ISO8601} [%thread] %-5level %logger{36} - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <appender name="FileLogger" class="ch.qos.logback.core.FileAppender">
+        <file>logs/ClientRcmdWebService.log</file>
+        <encoder>
+            <outputPatternAsHeader>true</outputPatternAsHeader>
+            <pattern>%d{ISO8601} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="Mailer" class="ch.qos.logback.classic.net.SMTPAppender" level="error">
+        <smtpHost>smtp.gmail.com</smtpHost>
+        <smtpPort>465</smtpPort>
+        <SSL>true</SSL>
+        <username>ishu.khatri@headhonchos.com</username>
+        <password>ik@hh486</password>
+
+        <to>ishu.khatri@gmail.com</to>
+        <to>ishu.khatri@headhonchos.com</to> <!-- additional destinations are possible -->
+        <from>ishu.khatri@headhonchos.com</from>
+        <subject>__Live__ FatalError: %logger{20} - %m</subject>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%date %-5level %logger{35} - %message%n</pattern>
+        </layout>
+	<cyclicBufferTracker class="ch.qos.logback.core.spi.CyclicBufferTracker">
+      <!-- send just one log entry per email -->
+      <bufferSize>3</bufferSize>
+      </cyclicBufferTracker>
+    </appender>
+
+    <root level="debug">
+        <appender-ref ref="ConsoleLogger" />
+        <appender-ref ref="FileLogger"/>
+        <!--<appender-ref ref="Mailer"/>-->
+        <appender-ref ref="RollingFileLogger"/>
+    </root>
+</configuration>
